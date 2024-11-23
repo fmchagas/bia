@@ -27,6 +27,7 @@ phases:
       - echo Enviando a imagem para o ECR...
       - docker push $ECR_URI/$IMAGE_REPO_NAME:latest
       - docker push $ECR_URI/$IMAGE_REPO_NAME:$IMAGE_TAG
+      - codebuild-breakpoint
       - echo Gerando artefato da imagem para o ECS
       - printf '[{"name":"bia","imageUri":"%s"}]' $ECR_URI/$IMAGE_REPO_NAME:$IMAGE_TAG > imagedefinitions.json
 artifacts:
